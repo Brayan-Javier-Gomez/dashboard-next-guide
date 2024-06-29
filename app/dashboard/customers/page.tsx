@@ -20,7 +20,6 @@ export default async function Page({
   const totalPages = await fetchInvoicesPages(query);
 
   const customers = await fetchFilteredCustomers(query);
-
   return (
     <div className="w-full">
       <Suspense fallback={<InvoicesTableSkeleton />}>

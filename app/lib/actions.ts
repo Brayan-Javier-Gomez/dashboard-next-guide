@@ -13,8 +13,19 @@ const FormSchema = z.object({
   date: z.string(),
 });
 
+const CustomerFormSchema = z.object({
+  id: z.string(),
+  name:z.string(),
+  phone:z.coerce.number(),
+  cedula:z.string(),
+  direccion:z.string(),
+  barrio:z.string()
+});
+
 const CreateInvoice = FormSchema.omit({ id: true, date: true });
 const UpdateInvoice = FormSchema.omit({ id: true, date: true });
+const CreateCustomer = CustomerFormSchema.omit({ id: true});
+
 
 export async function createInvoice(formData: FormData) {
   const { customerId, amount, status } = CreateInvoice.parse({
@@ -33,6 +44,30 @@ export async function createInvoice(formData: FormData) {
 
   revalidatePath('/dashboard/invoices');
   redirect('/dashboard/invoices');
+}
+
+export async function createCustomer(formData: FormData) {
+
+  console.log(formData);
+
+  const { name,phone,cedula,direccion,barrio } = CreateCustomer.parse({
+    name: formData.get('name'),
+    phone: formData.get('phone'),
+    cedula: formData.get('cedula'),
+    direccion: formData.get('direccion'),
+    barrio: formData.get('barrio')
+  });
+
+//   const amountInCents = amount * 100;
+//   const date = new Date().toISOString().split('T')[0];
+
+  await sql`
+  INSERT INTO customers (name, phone, cedula,direccion,barrio)
+  VALUES (${name}, ${phone}, ${cedula}, ${direccion},${barrio})
+`;
+
+  // revalidatePath('/dashboard/customers');
+  // redirect('/dashboard/customers');
 }
 
 

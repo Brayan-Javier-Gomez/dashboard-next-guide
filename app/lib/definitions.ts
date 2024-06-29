@@ -14,6 +14,7 @@ export type Customer = {
   name: string;
   email: string;
   image_url: string;
+  phone:number;
 };
 
 export type Invoice = {
@@ -37,6 +38,7 @@ export type LatestInvoice = {
   image_url: string;
   email: string;
   amount: string;
+  phone:string;
 };
 
 // The database returns a number for amount, but we later format it to a string with the formatCurrency function
@@ -53,6 +55,7 @@ export type InvoicesTable = {
   date: string;
   amount: number;
   status: 'pending' | 'paid';
+  phone:number;
 };
 
 export type CustomersTableType = {
@@ -63,6 +66,7 @@ export type CustomersTableType = {
   total_invoices: number;
   total_pending: number;
   total_paid: number;
+  phone:number;
 };
 
 export type FormattedCustomersTable = {
@@ -73,6 +77,7 @@ export type FormattedCustomersTable = {
   total_invoices: number;
   total_pending: string;
   total_paid: string;
+  phone:number;
 };
 
 export type CustomerField = {

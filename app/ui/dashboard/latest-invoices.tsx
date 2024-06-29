@@ -29,7 +29,7 @@ export default async function LatestInvoices() {
               >
                 <div className="flex items-center">
                   <Image
-                    src={invoice.image_url}
+                    src={invoice.image_url || "/customers/default-customer.webp"}
                     alt={`${invoice.name}'s profile picture`}
                     className="mr-4 rounded-full"
                     width={32}
@@ -40,7 +40,7 @@ export default async function LatestInvoices() {
                       {invoice.name}
                     </p>
                     <p className="hidden text-sm text-gray-500 sm:block">
-                      {invoice.email}
+                      {invoice.phone}
                     </p>
                   </div>
                 </div>
