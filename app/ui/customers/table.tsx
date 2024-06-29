@@ -5,6 +5,7 @@ import {
   CustomersTableType,
   FormattedCustomersTable,
 } from '@/app/lib/definitions';
+import { fetchCustomers, fetchFilteredCustomers } from '@/app/lib/data';
 
 export default async function CustomersTable({
   customers,
