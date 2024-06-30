@@ -66,8 +66,8 @@ export async function createCustomer(formData: FormData) {
   VALUES (${name}, ${phone}, ${cedula}, ${direccion},${barrio})
 `;
 
-  // revalidatePath('/dashboard/customers');
-  // redirect('/dashboard/customers');
+  revalidatePath('/dashboard/customers');
+  redirect('/dashboard/customers');
 }
 
 
