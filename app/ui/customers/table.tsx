@@ -78,13 +78,16 @@ export default async function CustomersTable({
                       Telefono
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
-                      Total Facturas
+                      Cedula
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
-                      Total Pendiente
+                      Facturas
+                    </th>
+                    <th scope="col" className="px-3 py-5 font-medium">
+                      Pendiente
                     </th>
                     <th scope="col" className="px-4 py-5 font-medium">
-                      Total pago
+                      Pago
                     </th>
                   </tr>
                 </thead>
@@ -106,6 +109,9 @@ export default async function CustomersTable({
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
                         {customer?.phone}
+                      </td>
+                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
+                        {customer?.cedula}
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
                         {customer.total_invoices}

@@ -57,17 +57,17 @@ export default async function InvoicesTable({
           <table className="hidden min-w-full text-gray-900 md:table">
             <thead className="rounded-lg text-left text-sm font-normal">
               <tr>
+              <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+                  Codigo
+                </th>
                 <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
                   Cliente
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Celular
+                  Frecuencia
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Valor
-                </th>
-                <th scope="col" className="px-3 py-5 font-medium">
-                  Fecha
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Estado
@@ -83,8 +83,11 @@ export default async function InvoicesTable({
                   key={invoice.id}
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                 >
+                  <td className="whitespace-nowrap px-3 py-3 text-center">
+                    {invoice?.code || ""}
+                  </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1">
                       <Image
                         src={invoice?.image_url || "/customers/default-customer.webp"}
                         className="rounded-full"
@@ -96,13 +99,10 @@ export default async function InvoicesTable({
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {invoice?.phone || ""}
+                    {invoice?.frecuency || ""}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {formatCurrency(invoice.amount)}
-                  </td>
-                  <td className="whitespace-nowrap px-3 py-3">
-                    {formatDateToLocal(invoice.date)}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     <InvoiceStatus status={invoice.status} />
